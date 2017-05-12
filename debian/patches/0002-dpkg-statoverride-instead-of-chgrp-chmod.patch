@@ -1,0 +1,50 @@
+From: Philipp Hug <philipp@hug.cx>
+Date: Tue, 20 Mar 2012 14:57:25 +0100
+Subject: dpkg-statoverride instead of chgrp/chmod
+
+Last-Update: 2015-02-24
+Forwarded: no
+---
+ user/drbdadm_main.c |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- a/user/v9/drbdadm_postparse.c
++++ b/user/v9/drbdadm_postparse.c
+@@ -1255,10 +1255,7 @@
+ 			    "  to be able to call drbdsetup and drbdmeta with root privileges.\n\n"
+ 			    "  You need to fix this with these commands:\n");
+ 		did_header = 1;
+-		err("  chgrp haclient %s\n"
+-		    "  chmod o-x %s\n"
+-		    "  chmod u+s %s\n\n",
+-		    cmd_name, cmd_name, cmd_name);
++		err("dpkg-statoverride --add --update root haclient 4750 %s\n\n", cmd_name);
+ 	}
+ 	return 1;
+ }
+--- a/user/v84/drbdadm_main.c
++++ b/user/v84/drbdadm_main.c
+@@ -2854,9 +2854,7 @@
+ 				"  You need to fix this with these commands:\n");
+ 		did_header = 1;
+ 		err(
+-			"  chgrp haclient %s\n"
+-			"  chmod o-x %s\n"
+-			"  chmod u+s %s\n\n", cmd_name, cmd_name, cmd_name);
++			"  dpkg-statoverride --add --update root haclient 4750 %s\n\n", cmd_name);
+ 	}
+ 	return 1;
+ }
+--- a/user/v83/drbdadm_main.c
++++ b/user/v83/drbdadm_main.c
+@@ -2306,9 +2306,7 @@
+ 				"  You need to fix this with these commands:\n");
+ 		did_header = 1;
+ 		fprintf(stderr,
+-			"  chgrp haclient %s\n"
+-			"  chmod o-x %s\n"
+-			"  chmod u+s %s\n\n", cmd_name, cmd_name, cmd_name);
++			"  dpkg-statoverride --add --update root haclient 4750 %s\n\n", cmd_name);
+ 	}
+ 	return 1;
+ }
