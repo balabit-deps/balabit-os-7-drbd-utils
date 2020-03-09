@@ -5,3 +5,4 @@ disable-automatic-user-survey.patch
 initscript-remove-path.patch
 reproducible-build
 initscript-add-start-runlevels.patch
+lp1866458-add-NLA_F_NESTED-flag.patch

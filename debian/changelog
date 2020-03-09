@@ -1,3 +1,10 @@
+drbd-utils (8.9.10-2ubuntu0.1) bionic; urgency=medium
+
+  * d/p/lp1866458-add-NLA_F_NESTED-flag.patch (LP: #1866458):
+    - Fix missing flag for HWE kernels >= v5.3.0
+
+ -- Rafael David Tinoco <rafaeldtinoco@ubuntu.com>  Mon, 09 Mar 2020 23:59:37 +0000
+
 drbd-utils (8.9.10-2) unstable; urgency=medium
 
   * Fix the service enable/disable logic (broken since 8.9.8-1, closes:
